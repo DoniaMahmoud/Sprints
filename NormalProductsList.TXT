@@ -1,0 +1,15 @@
+koty
+1
+foty
+normal
+33
+pepsi
+2
+beverage
+normal
+9
+chipsy
+3
+food
+normal
+35
