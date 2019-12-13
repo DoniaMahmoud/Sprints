@@ -34,7 +34,6 @@ public abstract class User extends Database {
 		if(ValidationController.registerValidate(username, usernamefile)==false) {
 			System.out.println("This username is taken. Please try another one");
 			String usern= n.next();
-			//StoreOwner so=new StoreOwner(username,password);
 			register(usern,password,indicator);
 		    return;
 		}
