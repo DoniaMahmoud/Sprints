@@ -13,3 +13,8 @@ chipsy
 food
 normal
 35
+Shampoo
+4
+haircare
+normal
+55

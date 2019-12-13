@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
-	protected static String CustomerUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\CustomerUsername.txt";
-	protected static String CustomerPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\CustomerPassword.txt";
-	protected static String AdminUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\AdminUsername.txt";
-	protected static String AdminPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\AdminPassword.txt";
-	protected static String StoreOwnerUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\StoreOwnerUsername.txt";
-	protected static String StoreOwnerPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\StoreOwnerPassword.txt";
-	protected static String OnlineStoreOwnerUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\OnlineStoreOwnerUsername.txt";
-	protected static String OnlineStoreOwnerPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\OnlineStoreOwnerPassword.txt";
-	protected static String NormalProductsList = "C:\\Users\\Youss\\Desktop\\Sprints\\NormalProductsList.txt";
-	protected static String OnlineProductsList = "C:\\Users\\Youss\\Desktop\\Sprints\\OnlineProductsList.txt";
-	protected static String BrandsList = "C:\\Users\\Youss\\Desktop\\Sprints\\BrandsList.txt";
+	protected static String CustomerUsername = "CustomerUsername.txt";
+	protected static String CustomerPassword = "CustomerPassword.txt";
+	protected static String AdminUsername = "AdminUsername.txt";
+	protected static String AdminPassword = "AdminPassword.txt";
+	protected static String StoreOwnerUsername = "StoreOwnerUsername.txt";
+	protected static String StoreOwnerPassword = "StoreOwnerPassword.txt";
+	protected static String OnlineStoreOwnerUsername = "OnlineStoreOwnerUsername.txt";
+	protected static String OnlineStoreOwnerPassword = "OnlineStoreOwnerPassword.txt";
+	protected static String NormalProductsList = "NormalProductsList.txt";
+	protected static String OnlineProductsList = "OnlineProductsList.txt";
+	protected static String BrandsList = "BrandsList.txt";
 	private  ArrayList <Products> DataNormalProducts=new ArrayList <Products>();
 	private  ArrayList <Products> DataOnlineProducts=new ArrayList <Products>();
 	private  ArrayList <Brands> DataBrands=new ArrayList <Brands>();
@@ -199,7 +199,8 @@ public class Database {
 	 
 	 
 	  public static void create_UserPath(String username) throws IOException {
-		    String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
+		   // String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
+			String path="";
 			path=path.concat(username);
 			path=path.concat(".txt");
 			File file = new File(path);
@@ -211,8 +212,9 @@ public class Database {
 	  
 	  
 	  public static void create_OnsiteStorePath(OnsiteStore s) throws IOException {
-		  String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
-		  path=path.concat(s.getStore_Name());
+		  //String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
+		 String path="";
+		 path=path.concat(s.getStore_Name());
 		  path=path.concat(".txt");
 		  File file = new File(path);
 			if(file.createNewFile()) {
@@ -231,7 +233,8 @@ public class Database {
 	  
 	  
 	  public static void create_OnlineStorePath(OnlineStore s) throws IOException {
-		  String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
+		  //String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
+		  String path="";
 		  path=path.concat(s.getStore_Name());
 		  path=path.concat(".txt");
 		  File file = new File(path);
