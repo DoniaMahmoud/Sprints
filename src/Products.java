@@ -65,7 +65,7 @@ public class Products {
     }
     public int Generate_SerialNo() throws IOException { 
     	if(this.type.equals("normal")) {
-    		File f= new File("D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\NormalProductsList.txt");
+    		File f= new File("C:\\Users\\Youss\\Desktop\\Sprints\\NormalProductsList.txt");
     		Scanner s=new Scanner(f);
     		int v=0;
     		while(s.hasNextLine()) {
@@ -76,7 +76,7 @@ public class Products {
     		this.SerialNo=v+1;
     	}
     	else {
-    		File f= new File("D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\OnlineProductsList.txt");
+    		File f= new File("C:\\Users\\Youss\\Desktop\\Sprints\\OnlineProductsList.txt");
     		Scanner s=new Scanner(f);
     		int v=0;
     		while(s.hasNextLine()) {

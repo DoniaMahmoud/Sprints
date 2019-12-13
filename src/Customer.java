@@ -67,6 +67,7 @@ public class Customer extends User{
 		FileWriter fileWriter= new FileWriter(c);
 		BufferedWriter bw =new BufferedWriter(fileWriter);
 		bw.write(String.valueOf(count));
+		bw.close();
 		
 		System.out.println("Please enter the store name you want to view products from: ");
 		String storeName=n.next();

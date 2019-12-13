@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
-	protected static String CustomerUsername = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\CustomerUsername.txt";
-	protected static String CustomerPassword = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\CustomerPassword.txt";
-	protected static String AdminUsername = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\AdminUsername.txt";
-	protected static String AdminPassword = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\AdminPassword.txt";
-	protected static String StoreOwnerUsername = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\StoreOwnerUsername.txt";
-	protected static String StoreOwnerPassword = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\StoreOwnerPassword.txt";
-	protected static String OnlineStoreOwnerUsername = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\OnlineStoreOwnerUsername.txt";
-	protected static String OnlineStoreOwnerPassword = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\OnlineStoreOwnerPassword.txt";
-	protected static String NormalProductsList = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\NormalProductsList.txt";
-	protected static String OnlineProductsList = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\OnlineProductsList.txt";
-	protected static String BrandsList = "D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\BrandsList.txt";
+	protected static String CustomerUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\CustomerUsername.txt";
+	protected static String CustomerPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\CustomerPassword.txt";
+	protected static String AdminUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\AdminUsername.txt";
+	protected static String AdminPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\AdminPassword.txt";
+	protected static String StoreOwnerUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\StoreOwnerUsername.txt";
+	protected static String StoreOwnerPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\StoreOwnerPassword.txt";
+	protected static String OnlineStoreOwnerUsername = "C:\\Users\\Youss\\Desktop\\Sprints\\OnlineStoreOwnerUsername.txt";
+	protected static String OnlineStoreOwnerPassword = "C:\\Users\\Youss\\Desktop\\Sprints\\OnlineStoreOwnerPassword.txt";
+	protected static String NormalProductsList = "C:\\Users\\Youss\\Desktop\\Sprints\\NormalProductsList.txt";
+	protected static String OnlineProductsList = "C:\\Users\\Youss\\Desktop\\Sprints\\OnlineProductsList.txt";
+	protected static String BrandsList = "C:\\Users\\Youss\\Desktop\\Sprints\\BrandsList.txt";
 	private  ArrayList <Products> DataNormalProducts=new ArrayList <Products>();
 	private  ArrayList <Products> DataOnlineProducts=new ArrayList <Products>();
 	private  ArrayList <Brands> DataBrands=new ArrayList <Brands>();
@@ -199,7 +199,7 @@ public class Database {
 	 
 	 
 	  public static void create_UserPath(String username) throws IOException {
-		    String path="D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\";
+		    String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
 			path=path.concat(username);
 			path=path.concat(".txt");
 			File file = new File(path);
@@ -211,7 +211,7 @@ public class Database {
 	  
 	  
 	  public static void create_OnsiteStorePath(OnsiteStore s) throws IOException {
-		  String path="D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\";
+		  String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
 		  path=path.concat(s.getStore_Name());
 		  path=path.concat(".txt");
 		  File file = new File(path);
@@ -231,7 +231,7 @@ public class Database {
 	  
 	  
 	  public static void create_OnlineStorePath(OnlineStore s) throws IOException {
-		  String path="D:\\1st TERM Year(3)\\Software Eng2\\Sprint3\\";
+		  String path="C:\\Users\\Youss\\Desktop\\Sprints\\";
 		  path=path.concat(s.getStore_Name());
 		  path=path.concat(".txt");
 		  File file = new File(path);
