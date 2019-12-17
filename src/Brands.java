@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Brands {
+public class Brands extends Database{
 
 	private String BrandName;
 	private String BrandCategory;
@@ -45,8 +45,10 @@ public class Brands {
 	  }
 	  
  
-	  public void setBrands(ArrayList<Brands> b) throws IOException {	
-		ListBrands=b;
+	  public void setBrands() throws IOException {	
+		  String filename=BrandsList;
+		  I_ReadBrandsFromFiles r=new ReadBrandsController();
+		  ListBrands=r.readBrands(filename);
 			
 	}
 	
@@ -58,7 +60,8 @@ public class Brands {
 
 	
 	
-	  public ArrayList<Brands> get_Brands(){
+	  public ArrayList<Brands> get_Brands() throws IOException{
+		    setBrands(); 
 			return ListBrands;
 		}
 	

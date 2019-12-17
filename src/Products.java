@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Products {
+public class Products extends Database{
 	private String ProductName;
 	private int SerialNo;
 	private String category;
@@ -17,7 +17,7 @@ public class Products {
 	private int amount;
 	public static ArrayList <Products> listNormalProducts=new ArrayList <Products>();
 	public static ArrayList <Products> listOnlineProducts=new ArrayList <Products>();
-    //public static String ProductsList = "D:\\1st TERM Year(3)\\Software Eng2\\Project\\ProductsList.txt";
+	
 	
 	
 	 public Products() throws IOException {
@@ -29,6 +29,7 @@ public class Products {
 	    	this.amount=0;
 	    }
 
+	 
 	
     public Products(String ProductName,String category ,String type,int price) throws IOException {
     	this.ProductName=ProductName;
@@ -36,10 +37,11 @@ public class Products {
     	this.category=category;
     	this.type=type;
     	this.price=price;
-    	this.amount=0;
+    	//this.amount=0;//not sure
     	
     }
     
+   
     
     public Products(String ProductName,int serial,String category ,String type,int price) throws IOException {
     	this.ProductName=ProductName;
@@ -47,8 +49,7 @@ public class Products {
     	this.category=category;
     	this.type=type;
     	this.price=price;
-    	this.amount=0;
-    	
+    	this.amount=0;	
     }
     
     
@@ -61,30 +62,19 @@ public class Products {
     	this.brand=brand;
     	this.price=price;
     	this.amount=amount;
-    	
     }
+    
+    
+    
     public int Generate_SerialNo() throws IOException { 
+    	ArrayList<Products>products=new ArrayList<Products>();
     	if(this.type.equals("normal")) {
-    		File f= new File("NormalProductsList.txt");
-    		Scanner s=new Scanner(f);
-    		int v=0;
-    		while(s.hasNextLine()) {
-    			v++;
-    			s.nextLine();
-    		}
-    		v=v/5;
-    		this.SerialNo=v+1;
+    		products=get_NormalProducts();
+    		this.SerialNo=products.size()+1;
     	}
     	else {
-    		File f= new File("OnlineProductsList.txt");
-    		Scanner s=new Scanner(f);
-    		int v=0;
-    		while(s.hasNextLine()) {
-    			v++;
-    			s.nextLine();
-    		}
-    		v=v/5;
-    		this.SerialNo=5000+v+1;
+    		products=get_OnlineProducts();
+    		this.SerialNo=5000+products.size()+1;
     	}
     	
     	return this.SerialNo;
@@ -99,17 +89,22 @@ public class Products {
     	this.price=price;
     }
     
+    
+    
     public void set_name(String ProductName) {
     	this.ProductName=ProductName;
     }
+    
     
     public void set_category(String category) {
     	this.category=category;
     }
     
+    
     public void set_price(int price) {
     	this.price=price;
     }
+    
     
     public void set_type(String type) {
     	this.type=type;
@@ -117,10 +112,9 @@ public class Products {
     
     
     public void set_brands(Brands b) {
-    	//this.brand.setBrandName(b.getBrandName());
-    	//this.brand.setBrandCategory(b.getBrandCategory());
     	this.brand=b;
     }
+   
     
     public void set_amount(int amount) {
     	this.amount=amount;
@@ -136,9 +130,11 @@ public class Products {
     	return this.ProductName;
     }
     
+    
     public String get_category() {
     	return this.category;
     }
+    
     
     public int get_price() {
     	return this.price;
@@ -149,31 +145,66 @@ public class Products {
     	return this.brand;
     }
     
+    
     public String get_type() {
     	return this.type;
     }
     
+    
     public int get_SerialNo() {
     	return this.SerialNo;
     }
+    
     
     public int get_amount() {
     	return this.amount;
     }
     
     
-	public void setNormalProducts(ArrayList<Products> p) throws IOException {	
-		listNormalProducts=p;
-			
-	}
-	
-	public void setOnlineProducts(ArrayList<Products> p) throws IOException {	
-		listOnlineProducts=p;
-			
+	public static void setNormalProducts() throws IOException {	
+		String filename=NormalProductsList;
+		I_ReadProdsFromFiles r=new ReadSystemProdsController();
+		listNormalProducts=r.readProds(filename);
 	}
 	
 	
+	public static void setOnlineProducts() throws IOException {	
+		String filename=OnlineProductsList;
+		I_ReadProdsFromFiles r=new ReadSystemProdsController();
+		listOnlineProducts=r.readProds(filename);
+	}
 	
+	
+	public static ArrayList<Products> get_NormalProducts() throws IOException{
+		setNormalProducts();
+		return listNormalProducts;
+	}
+	
+	
+	public static ArrayList<Products> get_OnlineProducts() throws IOException{
+		setOnlineProducts();
+		return listOnlineProducts;
+	}
+	
+	
+	public static ArrayList<Products> get_AllProducts() throws IOException{
+		ArrayList<Products> AllProducts=new ArrayList<Products>();
+		get_NormalProducts();
+		get_OnlineProducts();
+		for(int i=0; i<listNormalProducts.size(); i++) {
+			AllProducts.add(listNormalProducts.get(i));
+		}
+		for(int i=0; i<listOnlineProducts.size(); i++) {
+			AllProducts.add(listOnlineProducts.get(i));
+		}
+		return AllProducts;
+		}
+	
+	
+	
+	
+	
+	/*
 	public void printComp(Products p) {
 		//p=new Products();
 		System.out.println(p.ProductName);
@@ -181,32 +212,6 @@ public class Products {
 		System.out.println(p.price);
 	}
 	
-
-	public ArrayList<Products> get_AllProducts() throws IOException{
-		ArrayList<Products> AllProducts=new ArrayList<Products>();
-		Database d=new Database();
-		d.Get_NormalProducts();
-		d.Get_OnlineProducts();
-		for(int i=0; i<listNormalProducts.size(); i++) {
-			AllProducts.add(listNormalProducts.get(i));
-		}
-		for(int i=0; i<listOnlineProducts.size(); i++) {
-			AllProducts.add(listOnlineProducts.get(i));
-		}
-		
-		return AllProducts;
-		
-	}
-	
-	
-	public ArrayList<Products> get_NormalProducts(){
-		return listNormalProducts;
-	}
-	
-	
-	public ArrayList<Products> get_OnlineProducts(){
-		return listOnlineProducts;
-	}
-	
+*/
 	
 }
