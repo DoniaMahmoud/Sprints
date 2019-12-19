@@ -58,18 +58,24 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 		while(checkSerialValidity()==false) {
 			messages();
 		}
+		return;
 	}
 	
 	
 	
-	public boolean checkSerialValidity() {
+	public boolean checkSerialValidity() throws IOException {
 		for(int i=0; i<this.products.size(); i++) {
 			if(this.products.get(i).get_SerialNo()==this.choice) {
 				Products p=this.products.get(i);
 				int index=i;
-				I_SystemMessages s=new CustomerAmountChoiceController(p);
-				I_UserInputs u=new CustomerAmountChoiceController(p,this.c);
-				UpdateStoreController c=new UpdateStoreController(this.storename,p,this.products,index);
+				I_SystemMessages s=new CustomerAmountChoiceController();
+				s.messages();
+				I_ReturnIntChoices r=new CustomerAmountChoiceController(p,this.c);
+				int newAmount= this.products.get(i).get_amount()-r.get_choice();
+				p.set_amount(newAmount);
+				I_UpdateStoreProducts u=new UpdateProdsInFilesController();
+				String filename=this.storename+".txt";
+				u.UpdateFile(filename, this.products);
 				return true;
 			}
 			else

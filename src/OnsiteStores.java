@@ -61,7 +61,8 @@ public class OnsiteStores implements Stores{
 	public ArrayList<Stores> getStores() throws IOException{
 		I_ReadStoresFromFiles r=new ReadOnsiteStoresController();
 		this.onsiteStores=r.readStores();
-		return this.onsiteStores;	
+		System.out.println(this.onsiteStores.get(0).getStore_Category());
+		return this.onsiteStores;
 	}
 	
 	public void setStoreProducts() throws IOException {	

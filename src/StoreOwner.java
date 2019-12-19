@@ -29,23 +29,42 @@ public class StoreOwner extends User {
 	}
 	
 	
-	public void set_type() {
+	public void set_typeFromUser() {
 		I_SystemMessages s=new StoreOwnerType();
 		s.messages();
 		I_ReturnStringChoices r=new StoreOwnerType();
 		this.type=r.Get_choice();
 	}
 	
-	public static String get_type() {
-		return type;
+	public  void Settype(String type) {
+		this.type=type;
 	}
+	
 	
 	public void Set_data(String username,String password) {
 		this.username=username;
 		this.password=password;
-		set_type();
+		set_typeFromUser();
 	}
 	
+	public void SetData(String username,String password) {
+		this.username=username;
+		this.password=password;
+	}
+	
+	
+	public static String get_type() {
+		return type;
+	}
+	
+	
+	public String getUsername() {
+		return this.username;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
 	
 	public void addStore(Stores s) throws IOException {
 		String filename=this.username+".txt";
@@ -73,12 +92,11 @@ public class StoreOwner extends User {
 	}
 	
 	
-	public void get_CustViewiStats() throws IOException {
-		I_SystemMessages s=new ViewStoreCounterController();
-		s.messages();
-		I_ReturnIntChoices r=new ViewStoreCounterController();
-		System.out.println(r.get_choice());
+	public void CustViewiStats(int value) throws IOException {
+		System.out.println(value);
 	}
+
+
 	
 	
 	

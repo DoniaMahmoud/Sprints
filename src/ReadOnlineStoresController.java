@@ -53,12 +53,14 @@ public class ReadOnlineStoresController implements I_ReadStoresFromFiles {
 		filenames=getStoreOwners();
 		for(int i=0; i<filenames.size(); i++) {
 			File f2=new File(filenames.get(i));
-			while(f2.length()!=0) {
+			if(f2.length()!=0) {
 				stores=getstores(f2);
 				for(int j=0; j<stores.size(); j++) {
 					this.SystemOnlineStores.add(stores.get(j));
 				}
 			}
+			else 
+				continue;
 		}
 		
 		return this.SystemOnlineStores;

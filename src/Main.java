@@ -48,8 +48,8 @@ public class Main {
 				f=v.registerValidate(username, usernamefile);
 			}
 			user.register(username, password, usernamefile, passwordfile);
-			
-			
+			I_ReturnStringChoices k=new InstanceDeterminationController(user);
+			k.Get_choice();
 			
 		}
 		else {
@@ -85,10 +85,9 @@ public class Main {
 				passwordfile=FileConditionsController.PasswordFileCond(choice2);
 				f=v.loginValidate(username, usernamefile, password, passwordfile);
 			}
-			//System.out.println(user instanceof Customer);
-			
-			//Customer c=new Customer();
-			//c.Set_data(usernamefile, passwordfile)=user.Set_data(usernamefile, passwordfile);
+			I_ReturnStringChoices k=new InstanceDeterminationController(user);
+			k.Get_choice();
+
 		}
 	
 		

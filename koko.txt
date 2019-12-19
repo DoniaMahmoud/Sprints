@@ -4,7 +4,7 @@ beverage
 normal
 LG
 Electronics
-9
+90
 8
 vm
 5002

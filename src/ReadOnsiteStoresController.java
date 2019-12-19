@@ -32,6 +32,7 @@ public class ReadOnsiteStoresController implements I_ReadStoresFromFiles {
 			lines++;
 			obj.nextLine();
 		}
+		obj.close();
 		int StoresNo=lines/3;
 		Scanner obj2= new Scanner(f);
 		for(int i=0; i<StoresNo; i++) {
@@ -43,6 +44,7 @@ public class ReadOnsiteStoresController implements I_ReadStoresFromFiles {
 		    stores.add(s);
 		    
 		}
+		obj2.close();
 		return stores;
 	}
 	
@@ -54,12 +56,14 @@ public class ReadOnsiteStoresController implements I_ReadStoresFromFiles {
 		filenames=getStoreOwners();
 		for(int i=0; i<filenames.size(); i++) {
 			File f2=new File(filenames.get(i));
-			while(f2.length()!=0) {
+			if(f2.length()!=0) {
 				stores=getstores(f2);
 				for(int j=0; j<stores.size(); j++) {
 					this.SystemOnsiteStores.add(stores.get(j));
 				}
 			}
+			else
+				continue;
 		}
 		
 		return this.SystemOnsiteStores;

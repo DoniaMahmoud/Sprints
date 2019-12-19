@@ -11,13 +11,20 @@ public class Customer extends User{
 	public Customer (String username,String password) throws IOException {
 		this.username=username;
 		this.password=password;
-		//registerCust(this.username,this.password);
 	}
 	
 	public void Set_data(String username,String password) {
 		this.username=username;
 		this.password=password;
-		//loginCust(this.username,this.password);
+	}
+	
+	
+	public String getUsername() {
+		return this.username;
+	}
+	
+	public String getPassword() {
+		return this.password;
 	}
 	
 	

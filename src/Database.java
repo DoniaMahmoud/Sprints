@@ -55,6 +55,7 @@ public class Database {
 			 FileWriter fileWriter2= new FileWriter(file,true);
 			 BufferedWriter bw2 =new BufferedWriter(fileWriter2);
 			 bw2.write("0");
+			 bw2.close();
 		 }
 		 else {
 			 return;

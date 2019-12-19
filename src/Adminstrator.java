@@ -39,6 +39,20 @@ public class Adminstrator extends User{
 		}
 	}
 	
+	
+	public void SetData(String username,String password) {
+		this.username=username;
+		this.password=password;
+	}
+	
+	
+	public String getUsername() {
+		return this.username;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
   
 	public void addNewProduct(Products p) throws IOException {
 		  String type=p.get_type();

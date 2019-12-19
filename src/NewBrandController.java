@@ -4,6 +4,10 @@ import java.util.Scanner;
 public class NewBrandController implements I_SystemMessages, I_UserInputs {
 
     private Adminstrator admin=new Adminstrator();
+    
+    public NewBrandController() {
+		this.admin=null;
+	}
 	
 	public NewBrandController(Adminstrator a) {
 		this.admin=a;
