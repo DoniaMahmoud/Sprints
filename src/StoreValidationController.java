@@ -43,13 +43,16 @@ public class StoreValidationController implements I_SystemMessages, I_UserInputs
 			if(this.owner.get_type().equals("online")){
 				this.list=Products.get_OnlineProducts();
 				I_SystemMessages s=new ProductsToStoreController(this.list);
+				s.messages();
 				I_UserInputs u=new ProductsToStoreController(this.owner,this.list,storename);
-				
+				u.getUserInputs();
 			}
 			else {
 				this.list=Products.get_AllProducts();
 				I_SystemMessages s=new ProductsToStoreController(this.list);
+				s.messages();
 				I_UserInputs u=new ProductsToStoreController(this.owner,this.list,storename);
+				u.getUserInputs();
 			}
 		}
 		else {

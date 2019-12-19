@@ -35,8 +35,7 @@ public class InstanceDeterminationController implements I_ReturnStringChoices{
 		
 		else if(this.user instanceof StoreOwner) {
 			StoreOwner s=new StoreOwner();
-			s.SetData(this.user.getUsername(),this.user.getPassword());
-			s.Settype(StoreOwner.get_type());
+			s.SetData(this.user.getUsername(),this.user.getPassword(),StoreOwner.get_type());
 			I_UserExecution ct=new StoreOwnerExeController(s);
 			try {
 				ct.ExecuteUser();

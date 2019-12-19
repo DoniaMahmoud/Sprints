@@ -49,7 +49,6 @@ public class CustomerStoreChoiceController implements I_SystemMessages , I_UserI
 		System.out.println("Here is a list of stores available.");
 		for(int i=0; i<this.stores.size(); i++) {
 			System.out.println(this.stores.get(i).getStore_Name());
-			System.out.println(this.stores.get(i).getStore_Address());
 		}	
 		System.out.println("Please enter the store name you want to view products from: ");
 		Get_choice();

@@ -2,10 +2,10 @@ pepsi
 2
 beverage
 normal
-LG
-Electronics
+get
+fet
 90
-8
+3
 vm
 5002
 game

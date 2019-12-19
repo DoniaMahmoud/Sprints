@@ -11,7 +11,6 @@ public class StoreOwner extends User {
 	public StoreOwner (){
 		this.username="";
 		this.password="";
-		this.type="";
 	}
 	
 	
@@ -36,8 +35,8 @@ public class StoreOwner extends User {
 		this.type=r.Get_choice();
 	}
 	
-	public  void Settype(String type) {
-		this.type=type;
+	public  void Settype(String t) {
+		this.type=t;
 	}
 	
 	
@@ -47,9 +46,10 @@ public class StoreOwner extends User {
 		set_typeFromUser();
 	}
 	
-	public void SetData(String username,String password) {
+	public void SetData(String username,String password,String type) {
 		this.username=username;
 		this.password=password;
+		this.type=type;
 	}
 	
 	

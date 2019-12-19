@@ -11,13 +11,13 @@ public class OnsiteStores implements Stores{
 	
 	public OnsiteStores() {
 		this.name="";
-		this.name="";
+		this.category="";
 		this.address="";
 	}
 	
 	public OnsiteStores(String Name,String Category,String address) {
 		this.name=Name;
-		this.name=Category;
+		this.category=Category;
 		this.address=address;
 	}
 	
@@ -61,7 +61,7 @@ public class OnsiteStores implements Stores{
 	public ArrayList<Stores> getStores() throws IOException{
 		I_ReadStoresFromFiles r=new ReadOnsiteStoresController();
 		this.onsiteStores=r.readStores();
-		System.out.println(this.onsiteStores.get(0).getStore_Category());
+		//System.out.println(this.onsiteStores.get(0).getStore_Category());
 		return this.onsiteStores;
 	}
 	
@@ -81,7 +81,7 @@ public class OnsiteStores implements Stores{
 	@Override
 	public void setStore_Data(String Name, String Category,String address) {
 		this.name=Name;
-		this.name=Category;
+		this.category=Category;
 		this.address=address;
 	}
 

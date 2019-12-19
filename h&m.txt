@@ -1,0 +1,16 @@
+vm
+5002
+game
+online
+puma
+shoeWear
+35
+6
+pants
+5
+clothes
+normal
+get
+fet
+150
+4
