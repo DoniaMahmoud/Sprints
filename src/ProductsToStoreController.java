@@ -44,7 +44,7 @@ public class ProductsToStoreController implements I_SystemMessages, I_UserInputs
 			System.out.print("Price: ");
 			System.out.println(this.list.get(i).get_price());
 		}
-		System.out.println("Enter the serial number of the product you want to add to you store or press 0 to stop");
+		System.out.println("Enter the serial number of the product you want to add to your store: ");
 	}
 
 	
@@ -52,12 +52,8 @@ public class ProductsToStoreController implements I_SystemMessages, I_UserInputs
 	public void getUserInputs() throws IOException {
 		Scanner r=new Scanner(System.in);
 		int serial=r.nextInt();
-		if(serial==0) {
-			System.exit(1);
-		}
-		else {
-			CheckSerial(serial);
-		}
+		CheckSerial(serial);
+		
 	}
 	
 	

@@ -41,12 +41,16 @@ public class AdminstratorExeController implements I_UserExecution, I_SystemMessa
 			s.messages();
 			u=new NewProductController(this.a);
 			u.getUserInputs();
+			System.out.println("Product added Successfully!");
+			ExecuteUser();
 		}
 		else if(this.choice==2) {
 			s=new NewBrandController();
 			s.messages();
 			u=new NewBrandController(this.a);
 			u.getUserInputs();
+			System.out.println("Brand added Successfully!");
+			ExecuteUser();
 		}
 		else if(this.choice==3) {
 			System.out.println("Successful Logout");

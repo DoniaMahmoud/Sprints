@@ -42,18 +42,22 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 			s.messages();
 			u=new NewStoreController(this.s);
 			u.getUserInputs();
+			ExecuteUser();
 		}
 		else if(this.choice==2) {
-			s=new ProductsToStoreController();
+			s=new StoreValidationController();
 			s.messages();
-			u=new ProductsToStoreController(this.s);
+			u=new StoreValidationController(this.s);
 			u.getUserInputs();
+			System.out.println("Product added to your store successfully");
+			ExecuteUser();
 		}
 		else if(this.choice==3) {
 			s=new ViewStoreCounterController();
 			s.messages();
 			I_ReturnIntChoices r=new ViewStoreCounterController(this.s);
 			r.get_choice();
+			ExecuteUser();
 		}
 		else if(this.choice==4) {
 			System.out.println("Successful Logout");

@@ -18,3 +18,8 @@ Shampoo
 haircare
 normal
 55
+pants
+5
+clothes
+normal
+150

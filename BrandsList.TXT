@@ -34,3 +34,5 @@ jot
 bow
 ytt
 mon
+puma
+shoeWear
