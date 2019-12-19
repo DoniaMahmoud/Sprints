@@ -47,7 +47,7 @@ public class OnlineStores implements Stores {
 	}
 	
 	
-	public ArrayList<Stores> getStores() throws IOException {	
+	public ArrayList<Stores> getStores() throws IOException {
 		I_ReadStoresFromFiles r=new ReadOnlineStoresController();
 		this.onlineStores=r.readStores();
 		return this.onlineStores;	

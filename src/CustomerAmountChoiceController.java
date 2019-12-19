@@ -1,10 +1,10 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class CustomerAmountChoiceController implements I_SystemMessages , I_UserInputs{
+public class CustomerAmountChoiceController implements I_SystemMessages , I_UserInputs, I_ReturnIntChoices{
 	
 	private Customer c=new Customer();
-	private Products product;
+	private  Products product;
 	private int choiceAmount;
 	
 	public CustomerAmountChoiceController() {
@@ -24,6 +24,7 @@ public class CustomerAmountChoiceController implements I_SystemMessages , I_User
 	public void set_choice(int c) {
 		this.choiceAmount=c;
 	}
+	
 	
 	@Override
 	public void messages() {
@@ -51,6 +52,17 @@ public class CustomerAmountChoiceController implements I_SystemMessages , I_User
 	public void SendToPurchase(Products p) throws IOException {
 		this.c.BuyProduct(p);
 		}
+
+	@Override
+	public int get_choice() {
+		try {
+			getUserInputs();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.choiceAmount;
+	}
 	
 
 	

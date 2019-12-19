@@ -35,15 +35,21 @@ public class CustomerStoreChoiceController implements I_SystemMessages , I_UserI
 			this.s=new OnsiteStores();
 			this.stores=s.getStores();
 		}
-		messages();
 	}
 	
 	
 	@Override
 	public void messages() {
-		System.out.println("Here is a list stores available.");
+		try {
+			getStoreType();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Here is a list of stores available.");
 		for(int i=0; i<this.stores.size(); i++) {
 			System.out.println(this.stores.get(i).getStore_Name());
+			System.out.println(this.stores.get(i).getStore_Address());
 		}	
 		System.out.println("Please enter the store name you want to view products from: ");
 		Get_choice();
@@ -51,28 +57,29 @@ public class CustomerStoreChoiceController implements I_SystemMessages , I_UserI
 	
 	
 	@Override
-	public void getUserInputs() throws IOException {
+	public void getUserInputs() {
 		Scanner s=new Scanner(System.in);  
 		set_choice(s.next());
 		this.s.setStore_Name(this.choice);
-		 Database.create_StoreViewerPath(this.choice);
-		UpdateStoreViewsController u= new UpdateStoreViewsController(this.choice);
-		u.updateCounter();
 	}
 	
 
 	@Override
 	public String Get_choice() {
-		try {
-			getUserInputs();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		getUserInputs();
 		while(validateStoreName()==false) {
 			System.out.println("Storename is invalid. Please try again");
 			messages();
+		}
+		try {
+			Database.create_StoreViewerPath(this.choice);
+			System.out.println("1");
+			UpdateStoreViewsController u= new UpdateStoreViewsController(this.choice);
+			u.updateCounter();
+			System.out.println("1");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		try {
 			getChosenStoreProds();
@@ -80,9 +87,7 @@ public class CustomerStoreChoiceController implements I_SystemMessages , I_UserI
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return this.choice;
-		
 	}
 	
 	
@@ -100,6 +105,7 @@ public class CustomerStoreChoiceController implements I_SystemMessages , I_UserI
 	
 	public void getChosenStoreProds() throws IOException {
 		I_SystemMessages s=new CustomerProdChoiceController(this.s.get_StoreProducts(),this.choice,this.c);
+		s.messages();
 	}
 	
 

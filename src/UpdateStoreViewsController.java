@@ -13,28 +13,24 @@ public class UpdateStoreViewsController {
 	}
 	
 	public int getCount() throws IOException {
-		String filename=this.storename+".txt";
+		String filename=this.storename+"Viewer.txt";
 		File f=new File(filename);
-		if(!f.exists()) {
-			return 0;
+		Scanner obj=new Scanner(f);
+		String count="";
+		while(obj.hasNextLine()) {
+			count=obj.nextLine();
 		}
-		else {
-			Scanner obj=new Scanner(f);
-			String count="";
-			while(obj.hasNextLine()) {
-				count=obj.nextLine();
-			}
-			int counter=Integer.parseInt(count);
-			return counter;
+		int counter=Integer.parseInt(count);
+		return counter;
 		}
 	
-	}
+	
 	
 	
 	public void updateCounter() throws IOException {
 		int counter=getCount();
 		counter++;
-		String filename=this.storename+".txt";
+		String filename=this.storename+"Viewer.txt";
 		File f1 = new File(filename);
 		FileWriter fileWriter1= new FileWriter(f1,false);
 		BufferedWriter bw1 =new BufferedWriter(fileWriter1);
