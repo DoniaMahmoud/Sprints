@@ -2,17 +2,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ViewStoreCounterController implements I_SystemMessages , I_UserInputs, I_ReturnIntChoices{
+public class ViewStoreViewersController implements I_SystemMessages , I_UserInputs, I_ReturnIntChoices{
 
 	private StoreOwner s=new StoreOwner();
 	private String storename;
 	
-	public ViewStoreCounterController() {
+	public ViewStoreViewersController() {
 		this.storename="";
 		this.s=null;
 	}
 	
-	public ViewStoreCounterController(StoreOwner s) {
+	public ViewStoreViewersController(StoreOwner s) {
 		this.storename="";
 		this.s=s;
 	}
@@ -30,8 +30,13 @@ public class ViewStoreCounterController implements I_SystemMessages , I_UserInpu
 	
 	@Override
 	public void getUserInputs() throws IOException {
-		Scanner s=new Scanner(System.in);
-		setStorename(s.next());
+		Scanner n=new Scanner(System.in);
+		setStorename(n.next());
+		if(Database.searchstores(this.s,this.storename)==false) {
+			System.out.println("You don't have a store with this name!");
+			System.exit(1);
+		}
+		
 		
 	}
 	
@@ -46,16 +51,16 @@ public class ViewStoreCounterController implements I_SystemMessages , I_UserInpu
 		}
 		 if(CheckExistence()==false) {
 			 try {
-				s.CustViewiStats(0);
+				s.PrintStats(0);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		 }
 		 else {
-			 UpdateStoreViewsController u=new UpdateStoreViewsController(this.storename);
+			 UpdateStats u=new UpdateStoreViewsController(this.storename);
 			 try {
-				 s.CustViewiStats(u.getCount());
+				 s.PrintStats(u.getCount());
 				 return u.getCount();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

@@ -20,7 +20,9 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 		 System.out.println("1-Add Store: ");
 		 System.out.println("2-Add Products: ");
 		 System.out.println("3-Customer Viewing Statistics");
-		 System.out.println("4-Logout");
+		 System.out.println("4-Customer Buying Statistics");
+		 System.out.println("5-Soldout Statistics");
+		 System.out.println("6-Logout");
 		
 	}
 	
@@ -37,6 +39,7 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 		getUserInputs();
 		I_SystemMessages s;
 		I_UserInputs u;
+		I_ReturnIntChoices r;
 		if(this.choice==1) {
 			s=new NewStoreController();
 			s.messages();
@@ -53,13 +56,30 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 			ExecuteUser();
 		}
 		else if(this.choice==3) {
-			s=new ViewStoreCounterController();
+			s=new ViewStoreViewersController();
 			s.messages();
-			I_ReturnIntChoices r=new ViewStoreCounterController(this.s);
+		     r=new ViewStoreViewersController(this.s);
 			r.get_choice();
 			ExecuteUser();
 		}
+		
 		else if(this.choice==4) {
+			s=new ViewBuyingStatsController();
+			s.messages();
+			r=new ViewBuyingStatsController(this.s);
+			r.get_choice();
+			ExecuteUser();
+		}
+		
+		else if(this.choice==5) {
+			s=new ViewSoldOutProdsController();
+			s.messages();
+			r=new ViewSoldOutProdsController(this.s);
+			r.get_choice();
+			ExecuteUser();
+		}
+		
+		else if(this.choice==6) {
 			System.out.println("Successful Logout");
 			return;
 		}

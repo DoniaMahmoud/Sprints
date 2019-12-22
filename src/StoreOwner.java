@@ -92,11 +92,16 @@ public class StoreOwner extends User {
 	}
 	
 	
-	public void CustViewiStats(int value) throws IOException {
+	public void PrintStats(int value) throws IOException {
 		System.out.println(value);
 	}
 
 
+	public void PrinttSoldout(ArrayList<String> s) {
+		for(int i=0; i<s.size(); i++) {
+			System.out.println(s.get(i));
+		}
+	}
 	
 	
 	

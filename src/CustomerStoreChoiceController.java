@@ -72,18 +72,14 @@ public class CustomerStoreChoiceController implements I_SystemMessages , I_UserI
 		}
 		try {
 			Database.create_StoreViewerPath(this.choice);
-			System.out.println("1");
-			UpdateStoreViewsController u= new UpdateStoreViewsController(this.choice);
+			UpdateStats u= new UpdateStoreViewsController(this.choice);
 			u.updateCounter();
-			System.out.println("1");
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			getChosenStoreProds();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return this.choice;

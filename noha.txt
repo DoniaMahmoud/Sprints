@@ -1,9 +1,8 @@
-vm
+micro
 5002
-game
+g
 online
-ytt
-mon
-35
-1
-Berlin
+jot
+bow
+90
+2
