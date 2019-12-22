@@ -32,8 +32,10 @@ public class ValidationController implements I_EntryValidation{
 		r=new ReadPasswordsController();
 		ArrayList <String> written2= new ArrayList<String>();
 		written2=r.readFile(passwordfile);
+		int index=0;
 		for(int i=0; i<written1.size(); i++) {
 			if(username.equals(written1.get(i))) {
+				index=i;
 				found1=true;
 				break;
 			}
@@ -41,9 +43,11 @@ public class ValidationController implements I_EntryValidation{
 		if(found1==true) {
 			for(int i=0; i<written2.size(); i++) {
 				if(password.equals(written2.get(i))) {
-					found2=true;
-					System.out.println("Successful login!");
-					return true;
+					if(index==i) {
+						found2=true;
+						System.out.println("Successful login!");
+						return true;
+					}
 				}	
 			}
 			if(found2==false) {

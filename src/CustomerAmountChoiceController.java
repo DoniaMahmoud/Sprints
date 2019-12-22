@@ -39,7 +39,7 @@ public class CustomerAmountChoiceController implements I_SystemMessages , I_User
 	}
 
 	public void CheckAmount() throws IOException {
-		if(this.choiceAmount>this.product.get_amount()) {
+		if(this.choiceAmount>this.product.get_amount() || this.product.get_amount()==0) {
 			System.out.println("Amount exceeds the stock value.");
 			System.exit(1);
 		}

@@ -41,7 +41,7 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 			System.out.println("Price: " + this.products.get(i).get_price());
 			System.out.println("Amount: " + this.products.get(i).get_amount());
 		}
-		System.out.println("Please enter the serial no. of the product you want to buy: ");
+		System.out.println("Please enter the serial no. of the product you want to buy or 0 to stop: ");
 		try {
 			getUserInputs();
 		} catch (IOException e) {
@@ -55,10 +55,19 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 	public void getUserInputs() throws IOException {
 		Scanner s=new Scanner(System.in);  
 		set_choice(s.nextInt());
-		while(checkSerialValidity()==false) {
-			messages();
+		if(this.choice==0) {
+			System.exit(1);
 		}
-		return;
+		else {
+			while(checkSerialValidity()==false) {
+				messages();
+			}
+			Database.create_StoreBuyingStatsPath(this.storename);
+			UpdateStats u= new UpdateBuyingStatsController(this.storename);
+			u.updateCounter();
+			return;
+		}
+		
 	}
 	
 	

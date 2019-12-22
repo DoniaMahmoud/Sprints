@@ -63,6 +63,27 @@ public class Database {
 	 }
 	 
 	 
+	 
+	 public static void create_StoreBuyingStatsPath(String storename) throws IOException {
+		 String path="";
+		 path=path.concat(storename);
+		 path=path.concat("BuyingStats");
+		 path=path.concat(".txt");
+		 File file=new File(path);
+		 if(file.createNewFile()) {
+			 FileWriter fileWriter2= new FileWriter(file,true);
+			 BufferedWriter bw2 =new BufferedWriter(fileWriter2);
+			 bw2.write("0");
+			 bw2.close();
+		 }
+		 else {
+			 return;
+		 }
+	 }
+	 
+	 
+	 
+	 
 	 public static boolean searchstores(StoreOwner s,String Storename) throws IOException{
 		 String filename=s.getUsername()+".txt";
 		 ArrayList <String>written=new ArrayList<String>();
