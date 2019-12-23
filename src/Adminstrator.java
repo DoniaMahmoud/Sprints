@@ -88,6 +88,22 @@ public class Adminstrator extends User{
 		  
 		  }
 
+	 
+	 public void UserStats(int TotatlCustomers, int TotalStoreOwners , int TotatlOnlineStoreOwners, int TotalUsers ) {
+		 System.out.println("The total number of customers: "+TotatlCustomers);
+		  System.out.println("The total number of StoreOwners: "+TotalStoreOwners);
+		  System.out.println("The total number of OnlineStoreOwners: "+TotatlOnlineStoreOwners);
+		  System.out.println("The total number of Users: "+TotalUsers);
+	 }
 	
+	 
+	 public void ProdsStats(int TotatlProds, String HighestProdName , int HighestProdAmount ) {
+		 System.out.println("The Number of Products in this store is: "+TotatlProds);
+		  System.out.println("The Product with the highest stock is: "+HighestProdName);
+		  System.out.println("And its amount in stock is: "+HighestProdAmount);
+	 }
 
+	 
+	 
+	 
 }

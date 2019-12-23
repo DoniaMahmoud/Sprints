@@ -3,3 +3,7 @@
 /ViewBuyingStatsController.class
 /ViewStoreViewersController.class
 /ViewSoldOutProdsController.class
+/UpdateUserStatsController.class
+/ViewUserStatsController.class
+/UpdateProdsStatsController.class
+/ViewProductsStatsController.class
