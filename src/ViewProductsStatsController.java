@@ -1,29 +1,23 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ViewProductsStatsController implements I_SystemMessages,I_UserInputs,I_ReturnStringChoices{
 
 	private String storename=null;
-	private int TotalNoProds=0;
-	private int HighestProdAmount=0;
-	private String HighestProdName=null;
+	private ArrayList<String>Data=new ArrayList<String>();
 	private Adminstrator a=new Adminstrator();
-	
 	
 	public ViewProductsStatsController() {
 		this.storename="";
-	    int TotalNoProds=0;
-	    int HighestProdAmount=0;
-	    String HighestProdName=null;
+		this.Data=null;
 		this.a=null;
 	}
 	
 	public ViewProductsStatsController(Adminstrator a) {
 		this.a=a;
-		int TotalNoProds=0;
-	    int HighestProdAmount=0;
-	    String HighestProdName=null;
+		this.Data=null;
 		this.storename=null;
 	}
 	
@@ -59,12 +53,11 @@ public class ViewProductsStatsController implements I_SystemMessages,I_UserInput
 			System.exit(1);
 		}
 		else {
-			UpdateProdsStatsController u=new UpdateProdsStatsController();
+			Subject sub=new ProdsStatsSubject();
+			UpdateProdsStatsController u=new UpdateProdsStatsController(sub,this.storename);
 			try {
-				u.Get_ProductStats(filename);
-				this.TotalNoProds=u.getTotalProducts();
-				this.HighestProdAmount=u.getProductAmount();
-				this.HighestProdName=u.getProductName();
+				u.Get_ProductStats();
+				this.Data=u.getData();
 				sendData();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -72,6 +65,7 @@ public class ViewProductsStatsController implements I_SystemMessages,I_UserInput
 		}
 		return null;
 	}
+	
 	
 	
 	public boolean CheckExistence(String filename) {
@@ -87,7 +81,7 @@ public class ViewProductsStatsController implements I_SystemMessages,I_UserInput
 	
 	
 	public void sendData() {
-		this.a.ProdsStats(this.TotalNoProds,this.HighestProdName,this.HighestProdAmount);
+		this.a.ProdsStats(this.Data);
 	}
 
 

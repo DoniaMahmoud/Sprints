@@ -50,7 +50,10 @@ public class CustomerAmountChoiceController implements I_SystemMessages , I_User
 	}
 	
 	public void SendToPurchase(Products p) throws IOException {
-		this.c.BuyProduct(p);
+		System.out.println("Enter your address: ");
+		Scanner s=new Scanner(System.in);
+		String address=s.next();
+		this.c.BuyProduct(p,address);
 		}
 
 	@Override

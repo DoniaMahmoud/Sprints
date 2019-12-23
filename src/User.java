@@ -15,7 +15,10 @@ public abstract class User extends Database {
 		if(!usernamefile.contains("Admin")) {
 			create_UserPath(username);
 		}
-	    
+		
+	    Subject s=new UserStatsSubject();
+	    Observer o= new UpdateUserStatsController(s);
+	    s.DataChanged();
 	}
 	
 	

@@ -82,9 +82,7 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 				I_ReturnIntChoices r=new CustomerAmountChoiceController(p,this.c);
 				int newAmount= this.products.get(i).get_amount()-r.get_choice();
 				p.set_amount(newAmount);
-				I_UpdateStoreProducts u=new UpdateProdsInFilesController();
-				String filename=this.storename+".txt";
-				u.UpdateFile(filename, this.products);
+				Update();
 				return true;
 			}
 			else
@@ -95,6 +93,15 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 	}
 	
 	
+	
+	public void Update() throws IOException {
+		I_UpdateStoreProducts u=new UpdateProdsInFilesController();
+		String filename=this.storename+".txt";
+		u.UpdateFile(filename, this.products);
+		Subject sub=new ProdsStatsSubject();
+	    Observer o= new UpdateProdsStatsController(sub,this.storename);
+        sub.DataChanged();
+	}
 	
 
 	

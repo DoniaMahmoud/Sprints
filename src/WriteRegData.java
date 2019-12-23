@@ -10,8 +10,9 @@ public class WriteRegData implements I_WriteToFiles{
 		File f1 = new File(filename);
 		FileWriter fileWriter1= new FileWriter(f1,true);
 		BufferedWriter bw1 =new BufferedWriter(fileWriter1);
-		bw1.newLine();
+		//bw1.newLine();
 	    bw1.write(data);
+	    bw1.newLine();
 	    bw1.close();
 		
 	}

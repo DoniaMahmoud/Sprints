@@ -13,7 +13,7 @@ public class ReadOnlineStoresController implements I_ReadStoresFromFiles {
 	public ArrayList <String> getStoreOwners() throws IOException{
 		ArrayList<String>owners=new ArrayList<String>();
 		ArrayList<String>filenames=new ArrayList<String>();
-		I_ReadFromFiles r=new ReadUsernamesController();
+		I_ReadFromFiles r=new ReadDataController();
 		owners=r.readFile(OnlineStoreOwnerUsername);
 		for(int i=0; i<owners.size(); i++) {
 			filenames.add(owners.get(i)+".txt");

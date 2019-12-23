@@ -6,6 +6,7 @@ me
 de
 85
 1
+giza
 candyCrush
 5005
 Game
@@ -14,3 +15,4 @@ me
 de
 45
 1
+dokki
