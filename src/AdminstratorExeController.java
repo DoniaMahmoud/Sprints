@@ -21,7 +21,9 @@ public class AdminstratorExeController implements I_UserExecution, I_SystemMessa
 	public void messages() {
 		System.out.println("1-Add Products: ");
 		System.out.println("2-Add Brands ");
-		System.out.println("3-Logout ");
+		System.out.println("3-View Users' Statistics");
+		System.out.println("4-View Products' Statistics");
+		System.out.println("5-Logout ");
 	}
 	
 	@Override
@@ -36,6 +38,8 @@ public class AdminstratorExeController implements I_UserExecution, I_SystemMessa
 		getUserInputs();
 		I_SystemMessages s;
 		I_UserInputs u;
+		I_ReturnIntChoices c;
+		I_ReturnStringChoices st;
 		if(this.choice==1) {
 			s=new NewProductController();
 			s.messages();
@@ -52,7 +56,22 @@ public class AdminstratorExeController implements I_UserExecution, I_SystemMessa
 			System.out.println("Brand added Successfully!");
 			ExecuteUser();
 		}
+		
 		else if(this.choice==3) {
+			c=new ViewUserStatsController(this.a);
+			c.get_choice();
+			ExecuteUser();
+		}
+		
+		else if(this.choice==4) {
+			s=new ViewProductsStatsController();
+			s.messages();
+			st=new ViewProductsStatsController(this.a);
+			st.Get_choice();
+			ExecuteUser();
+		}
+		
+		else if(this.choice==5) {
 			System.out.println("Successful Logout");
 			return;
 		}
