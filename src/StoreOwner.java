@@ -62,6 +62,10 @@ public class StoreOwner extends User {
 		return this.username;
 	}
 	
+	public void setUsername(String name) {
+		this.username=name;
+	}
+	
 	public String getPassword() {
 		return this.password;
 	}
@@ -111,6 +115,13 @@ public class StoreOwner extends User {
 				System.out.println(s.get(i));
 			}
 		}	
+	}
+	
+	
+	public void AddCollaborator(String Storename,String CollabName) throws IOException {
+		String filename=Storename+"Collaborators.txt";
+		I_WriteToFiles f=new WriteRegData();
+		f.writeData(CollabName,filename);
 	}
 	
 	

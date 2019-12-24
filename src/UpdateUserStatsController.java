@@ -8,6 +8,7 @@ public class UpdateUserStatsController extends Observer{
 	private ArrayList<String>StoreOwners=new ArrayList<String>();
 	private ArrayList<String>OnlineStoreOwners=new ArrayList<String>();
 	private ArrayList<String>Customers=new ArrayList<String>();
+	private ArrayList<String>Collaborators=new ArrayList<String>();
 	private ArrayList<String> data=new ArrayList<String>();
 	private Subject sub;
 
@@ -16,6 +17,7 @@ public class UpdateUserStatsController extends Observer{
 		this.StoreOwners=null;
 		this.OnlineStoreOwners=null;
 		this.Customers=null;
+		this.Collaborators=null;
 	}
 	
 	public UpdateUserStatsController(Subject sub) {
@@ -33,7 +35,9 @@ public class UpdateUserStatsController extends Observer{
 		  String filename2 = Database.OnlineStoreOwnerUsername;
 		  this. OnlineStoreOwners=files.readFile(filename2);
 		  String filename3 = Database.CustomerUsername;
-		  this.Customers=files.readFile(filename3);	  
+		  this.Customers=files.readFile(filename3);
+		  String filename4 = Database.CollaboratorsUsername;
+		  this.Collaborators=files.readFile(filename4);
 		  SaveData();
 	}
 	
@@ -42,11 +46,13 @@ public class UpdateUserStatsController extends Observer{
 		String TotalCustomers=String.valueOf( this.Customers.size());
 		String TotalOnlineStoreOwners=String.valueOf( this.OnlineStoreOwners.size());
 		String TotalStoreOwners=String.valueOf( this.StoreOwners.size());
-		int TotalUsers=this.Customers.size()+this.OnlineStoreOwners.size()+this.StoreOwners.size();
+		String TotalCollaborators=String.valueOf( this.Collaborators.size());
+		int TotalUsers=this.Customers.size()+this.OnlineStoreOwners.size()+this.StoreOwners.size()+this.Collaborators.size();
 		String TotalUSers=String.valueOf(TotalUsers);
 		this.data.add(TotalCustomers);
 		this.data.add(TotalOnlineStoreOwners);
 		this.data.add(TotalStoreOwners);
+		this.data.add(TotalCollaborators);
 		this.data.add(TotalUSers);
 		I_WriteArrayToFiles f=new OverWriteDataController();
 		f.writeData(this.data,Database.UserStats);

@@ -17,21 +17,22 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 	
 	@Override
 	public void messages() {
-		 System.out.println("1-Add Store: ");
-		 System.out.println("2-Add Products: ");
-		 System.out.println("3-Customer Viewing Statistics");
-		 System.out.println("4-Customer Buying Statistics");
-		 System.out.println("5-Soldout Statistics");
-		 System.out.println("6-Logout");
+		 System.out.println("1-Add Store");
+		 System.out.println("2-Add Products");
+		 System.out.println("3-Add Collaborators");
+		 System.out.println("4-Customer Viewing Statistics");
+		 System.out.println("5-Customer Buying Statistics");
+		 System.out.println("6-Soldout Statistics");
+		 System.out.println("7-Logout");
 		
 	}
 	
 	@Override
 	public void getUserInputs() throws IOException {
 		Scanner s=new Scanner(System.in);
-		SetChoice(s.nextInt());
-		
+		SetChoice(s.nextInt());	
 	}
+	
 	
 	@Override
 	public void ExecuteUser() throws IOException {
@@ -40,6 +41,7 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 		I_SystemMessages s;
 		I_UserInputs u;
 		I_ReturnIntChoices r;
+		I_ReturnStringChoices rt;
 		if(this.choice==1) {
 			s=new NewStoreController();
 			s.messages();
@@ -55,7 +57,17 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 			System.out.println("Product added to your store successfully");
 			ExecuteUser();
 		}
+		
 		else if(this.choice==3) {
+			s=new ValidateNewCollabController();
+			s.messages();
+			rt= new ValidateNewCollabController(this.s);
+			rt.Get_choice();
+			System.out.println("Collaborator added to your store successfully");
+			ExecuteUser();
+		}
+		
+		else if(this.choice==4) {
 			s=new ViewStoreViewersController();
 			s.messages();
 		     r=new ViewStoreViewersController(this.s);
@@ -63,7 +75,7 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 			ExecuteUser();
 		}
 		
-		else if(this.choice==4) {
+		else if(this.choice==5) {
 			s=new ViewBuyingStatsController();
 			s.messages();
 			r=new ViewBuyingStatsController(this.s);
@@ -71,7 +83,7 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 			ExecuteUser();
 		}
 		
-		else if(this.choice==5) {
+		else if(this.choice==6) {
 			s=new ViewSoldOutProdsController();
 			s.messages();
 			r=new ViewSoldOutProdsController(this.s);
@@ -79,7 +91,7 @@ public class StoreOwnerExeController implements I_UserExecution , I_SystemMessag
 			ExecuteUser();
 		}
 		
-		else if(this.choice==6) {
+		else if(this.choice==7) {
 			System.out.println("Successful Logout");
 			return;
 		}

@@ -86,17 +86,18 @@ public class Adminstrator extends User{
 			else  {
 				return false;
 			}
-		  
 		  }
 
 	 
 	 public void UserStats(ArrayList<String>Data ) {
-		 System.out.println("The total number of customers: "+Data.get(0));
-		 System.out.println("The total number of OnlineStoreOwners: "+Data.get(1));
+		  System.out.println("The total number of customers: "+Data.get(0));
+		  System.out.println("The total number of OnlineStoreOwners: "+Data.get(1));
 		  System.out.println("The total number of StoreOwners: "+Data.get(2));
-		  System.out.println("The total number of Users: "+Data.get(3));
+		  System.out.println("The total number of Collaborators: "+Data.get(3));
+		  System.out.println("The total number of Users: "+Data.get(4));
 	 }
 	
+	 
 	 
 	 public void ProdsStats(ArrayList<String>Data) {
 		 if(Data.size()==0) {

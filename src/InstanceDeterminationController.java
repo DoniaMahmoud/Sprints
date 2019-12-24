@@ -44,13 +44,24 @@ public class InstanceDeterminationController implements I_ReturnStringChoices{
 				e.printStackTrace();
 			}
 		}
+		
+		else if(this.user instanceof Collaborator) {
+			Collaborator cb=new Collaborator();
+			try {
+				cb.Set_data(this.user.getUsername(),this.user.getPassword());
+				I_UserExecution ct=new CollaboratorExeController(cb);
+				ct.ExecuteUser();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 	}
 	
 	
 	@Override
 	public String Get_choice() {
 		identify();
-		return "Here is the available Functionlities: ";
+		return null;
 }
 	
 }

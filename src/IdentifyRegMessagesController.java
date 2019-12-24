@@ -14,6 +14,7 @@ public class IdentifyRegMessagesController implements I_SystemMessages , I_UserI
 		System.out.println("1-Register as Customer ");
 		System.out.println("2-Register as Adminstrator ");
 		System.out.println("3-Register as StoreOwner ");
+		System.out.println("4-Register as Collaborator ");
 	}
 
 	@Override

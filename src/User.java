@@ -12,7 +12,7 @@ public abstract class User extends Database {
 		I_WriteToFiles w=new WriteRegData();
 		w.writeData(username, usernamefile);
 		w.writeData(password, passwordfile);
-		if(!usernamefile.contains("Admin")) {
+		if(!usernamefile.contains("Admin") && !usernamefile.contains("Collab") ) {
 			create_UserPath(username);
 		}
 		

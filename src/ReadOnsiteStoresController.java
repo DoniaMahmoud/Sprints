@@ -8,13 +8,13 @@ public class ReadOnsiteStoresController implements I_ReadStoresFromFiles {
 
 	private String StoreOwnerUsername = "StoreOwnerUsername.txt";
 	private ArrayList<Stores> SystemOnsiteStores=new ArrayList<Stores>();
-	
+	private ArrayList<String> OnsiteOwners = new ArrayList<String>();
 	
 	public ArrayList <String> getStoreOwners() throws IOException{
 		ArrayList<String>owners=new ArrayList<String>();
 		ArrayList<String>filenames=new ArrayList<String>();
 		I_ReadFromFiles r=new ReadDataController();
-		owners=r.readFile(StoreOwnerUsername);
+		this.OnsiteOwners=r.readFile(StoreOwnerUsername);
 		for(int i=0; i<owners.size(); i++) {
 			filenames.add(owners.get(i)+".txt");
 		}
@@ -69,4 +69,10 @@ public class ReadOnsiteStoresController implements I_ReadStoresFromFiles {
 		return this.SystemOnsiteStores;
 	}
 
+	
+	public ArrayList<String>GetOnsiteOwners(){
+		return this.OnsiteOwners;
+	}
+		
+	
 }

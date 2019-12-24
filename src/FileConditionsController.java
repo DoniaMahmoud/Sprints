@@ -24,6 +24,10 @@ public class FileConditionsController {
 
 			}
 		}
+		else if(c==4) {
+			usernamefile=Database.CollaboratorsUsername;
+		}
+		
 		return usernamefile;
 	}
 	
@@ -45,6 +49,11 @@ public class FileConditionsController {
 				passwordfile=Database.OnlineStoreOwnerPassword;
 			}
 		}
+		
+		else if(c==4) {
+			passwordfile=Database.CollaboratorsPassword;
+		}
+		
 		return passwordfile;
 
 	}

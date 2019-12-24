@@ -14,6 +14,8 @@ public class Database {
 	protected static String StoreOwnerPassword = "StoreOwnerPassword.txt";
 	protected static String OnlineStoreOwnerUsername = "OnlineStoreOwnerUsername.txt";
 	protected static String OnlineStoreOwnerPassword = "OnlineStoreOwnerPassword.txt";
+	protected static String CollaboratorsUsername="CollaboratorsUsername.txt";
+	protected static String CollaboratorsPassword="CollaboratorsPassword.txt";
 	protected static String NormalProductsList = "NormalProductsList.txt";
 	protected static String OnlineProductsList = "OnlineProductsList.txt";
 	protected static String BrandsList = "BrandsList.txt";
@@ -106,6 +108,13 @@ public class Database {
 	 }
 	 
 	 
+	 public static void create_StoreCollabPath(String storename) throws IOException{
+			String path="";
+			path=path.concat(storename);
+			path=path.concat("Collaborators.txt");
+			File file = new File(path);
+			file.createNewFile();
+	}
 	 
 	 
 	 public static boolean searchstores(StoreOwner s,String Storename) throws IOException{
