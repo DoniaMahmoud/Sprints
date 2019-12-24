@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class ViewSoldOutProdsController  implements I_SystemMessages , I_UserInputs, I_ReturnIntChoices{
 	private StoreOwner s=new StoreOwner();
 	private String storename;
+	private ArrayList <String>Pnames=new ArrayList<String>();
 	
 	public ViewSoldOutProdsController() {
 		this.storename="";
@@ -43,30 +44,14 @@ public class ViewSoldOutProdsController  implements I_SystemMessages , I_UserInp
 	public int get_choice() {
 		 try {
 			getUserInputs();
+			UpdateSoldOutStatsController u=new UpdateSoldOutStatsController(this.storename);
+			u.Get_SoldOutStats();
+			this.Pnames=u.getData();
+			s.PrinttSoldout(this.Pnames);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		 String filename=this.storename+".txt";
-		 ArrayList <Products> products=new ArrayList<Products>();
-		 I_ReadProdsFromFiles f= new ReadStoreProdsController();
-		 try {
-			products=f.readProds(filename);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		 getSoldout(products);
 		 return 0;
-	}
-
-
-	public void getSoldout(ArrayList<Products> p) {
-		ArrayList<String>Pnames=new ArrayList<String>();
-		for(int i=0; i<p.size(); i++) {
-			if(p.get(i).get_amount()==0) {
-				Pnames.add(p.get(i).get_name());
-			}
-		}
-		s.PrinttSoldout(Pnames);
 	}
 
 	

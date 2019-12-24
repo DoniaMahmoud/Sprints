@@ -1,3 +1,4 @@
+
 mario
 5003
 software
@@ -16,3 +17,12 @@ ted
 55
 1
 fayoum
+pants
+5
+clothes
+normal
+wed
+ted
+150
+1
+dubai

@@ -49,7 +49,7 @@ public class ViewBuyingStatsController implements I_SystemMessages , I_UserInput
 		}
 		 if(CheckExistence()==false) {
 			 try {
-				s.PrintStats(0);
+				s.PrintBuyingStats(0);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -58,7 +58,7 @@ public class ViewBuyingStatsController implements I_SystemMessages , I_UserInput
 		 else {
 			 UpdateStats u=new UpdateBuyingStatsController(this.storename);
 			 try {
-				 s.PrintStats(u.getCount());
+				 s.PrintBuyingStats(u.getCount());
 				 return u.getCount();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

@@ -21,8 +21,7 @@ public class ViewUserStatsController implements I_ReturnIntChoices{
 	
 	@Override
 	public int get_choice() {
-		Subject sub=new UserStatsSubject();
-		UpdateUserStatsController user= new UpdateUserStatsController(sub);
+		UpdateUserStatsController user= new UpdateUserStatsController();
 		try {
 			user.GetUserStats();
 			this.Data=user.getData();

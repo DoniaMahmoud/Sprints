@@ -92,18 +92,26 @@ public class StoreOwner extends User {
 	}
 	
 	
-	public void PrintStats(int value) throws IOException {
-		System.out.println(value);
+	public void PrintViewStats(int value) throws IOException {
+		System.out.println("The no. of views for this store is: "+value);
+	}
+	
+	
+	public void PrintBuyingStats(int value) throws IOException {
+		System.out.println("The no. of items bought from this store is: "+value);
 	}
 
 
 	public void PrinttSoldout(ArrayList<String> s) {
-		for(int i=0; i<s.size(); i++) {
-			System.out.println(s.get(i));
+		if(s.size()==0) {
+			System.out.println("0");
 		}
+		else {
+			for(int i=0; i<s.size(); i++) {
+				System.out.println(s.get(i));
+			}
+		}	
 	}
-	
-	
 	
 	
 }

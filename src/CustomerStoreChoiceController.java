@@ -72,8 +72,9 @@ public class CustomerStoreChoiceController implements I_SystemMessages , I_UserI
 		}
 		try {
 			Database.create_StoreViewerPath(this.choice);
-			UpdateStats u= new UpdateStoreViewsController(this.choice);
-			u.updateCounter();
+			Subject sub=new ViewingStatsSubject();
+			Observer o=new UpdateStoreViewsController(this.choice,sub);
+			sub.DataChanged();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

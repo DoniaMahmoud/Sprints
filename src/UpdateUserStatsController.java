@@ -48,7 +48,7 @@ public class UpdateUserStatsController extends Observer{
 		this.data.add(TotalOnlineStoreOwners);
 		this.data.add(TotalStoreOwners);
 		this.data.add(TotalUSers);
-		I_WriteArrayToFiles f=new WriteDataController();
+		I_WriteArrayToFiles f=new OverWriteDataController();
 		f.writeData(this.data,Database.UserStats);
 	}
 

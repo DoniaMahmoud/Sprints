@@ -47,6 +47,7 @@ public class Database {
 			}
 			
 			create_StoreProdsStatsPath(s.getStore_Name());
+			create_StoreSoldOutStatsPath(s.getStore_Name());
 	 }
 	 
 	 
@@ -59,6 +60,13 @@ public class Database {
 	 }
 	 
 	 
+	 public static void create_StoreSoldOutStatsPath(String name) throws IOException{
+		  String path="";
+		  path=path.concat(name);
+		  path=path.concat("SoldOutStats.txt");
+		  File file = new File(path);
+		  file.createNewFile();		
+	 }
 	 
 	 
 	 public static void create_StoreViewerPath(String storename) throws IOException {

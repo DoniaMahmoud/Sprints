@@ -99,7 +99,7 @@ public class Adminstrator extends User{
 	
 	 
 	 public void ProdsStats(ArrayList<String>Data) {
-		 if(Data==null) {
+		 if(Data.size()==0) {
 			 System.out.println("No products added in this store yet.");
 		 }
 		 else {

@@ -6,11 +6,17 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class UpdateStoreViewsController extends UpdateStats{
-	private String storename;
+	
+	public UpdateStoreViewsController(String s,Subject sub) {
+		this.sub=sub;
+		sub.registerObserver(this);
+		this.storename=s;
+	}	
 	
 	public UpdateStoreViewsController(String s) {
 		this.storename=s;
 	}	
+	
 	
 	public String GenerateFilePath() {
 		String filename=this.storename+"Viewer.txt";

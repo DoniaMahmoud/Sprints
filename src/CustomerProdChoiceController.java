@@ -63,8 +63,9 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 				messages();
 			}
 			Database.create_StoreBuyingStatsPath(this.storename);
-			UpdateStats u= new UpdateBuyingStatsController(this.storename);
-			u.updateCounter();
+			Subject sub=new BuyingStatsSubject();
+			Observer o=new UpdateBuyingStatsController(this.storename,sub);
+			sub.DataChanged();
 			return;
 		}
 		
@@ -83,6 +84,7 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 				int newAmount= this.products.get(i).get_amount()-r.get_choice();
 				p.set_amount(newAmount);
 				Update();
+				UpdateAmount();
 				return true;
 			}
 			else
@@ -103,7 +105,14 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
         sub.DataChanged();
 	}
 	
+	
+	public void UpdateAmount() throws IOException{
+		Subject sub=new SoldOutStatsSubject();
+		Observer o=new UpdateSoldOutStatsController(this.storename,sub);
+		sub.DataChanged();
+	}
 
+	
 	
 	
 	

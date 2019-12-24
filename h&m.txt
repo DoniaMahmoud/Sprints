@@ -13,7 +13,7 @@ normal
 wed
 ted
 150
-3
+4
 Shampoo
 4
 haircare
@@ -21,4 +21,4 @@ normal
 wed
 ted
 55
-5
+0
