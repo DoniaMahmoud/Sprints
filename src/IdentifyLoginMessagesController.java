@@ -14,6 +14,7 @@ public class IdentifyLoginMessagesController implements I_SystemMessages , I_Use
 		System.out.println("1-Login as Customer ");
 		System.out.println("2-Login as Adminstrator ");
 		System.out.println("3-Login as StoreOwner ");
+		System.out.println("4-Login as Collaborator ");
 		
 	}
 

@@ -19,3 +19,10 @@
 /UpdateSoldOutStatsController.class
 /SoldOutStatsSubject.class
 /OverWriteDataController.class
+/Collaborator.class
+/CollaboratorExeController.class
+/CollabToStoreController.class
+/ValidateNewCollabController.class
+/CollaborateController.class
+/I_Collaborator.class
+/StoreOwnerAdapter.class

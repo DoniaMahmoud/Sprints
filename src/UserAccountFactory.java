@@ -12,6 +12,9 @@ public class UserAccountFactory {
 		else if(c==3) {
 			user=new StoreOwner();
 		}
+		else if(c==4) {
+			user=new Collaborator();
+		}
 		
 		return user;
 	}
