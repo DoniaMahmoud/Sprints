@@ -76,12 +76,34 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 	public boolean checkSerialValidity() throws IOException {
 		for(int i=0; i<this.products.size(); i++) {
 			if(this.products.get(i).get_SerialNo()==this.choice) {
+				I_Discount discount= new OriginalPrice(this.products.get(i).get_price());
+				System.out.println("Original Price="+discount.getPrice());
 				Products p=this.products.get(i);
-				int index=i;
 				I_SystemMessages s=new CustomerAmountChoiceController();
 				s.messages();
 				I_ReturnIntChoices r=new CustomerAmountChoiceController(p,this.c);
-				int newAmount= this.products.get(i).get_amount()-r.get_choice();
+				int newAmount= this.products.get(i).get_amount()-r.get_choice();		
+				if(c.CheckIfStoreOwner() && c.FirstTimeToBuy() && TwoSameProductsStoreOwner(c.getUsername(),this.products.get(i).get_SerialNo()) ) {	
+					 discount =new StoreOwnerDiscount(discount).getNewPrice();
+                 	 discount = new FirstTimeToBuyDiscount(discount).getNewPrice();
+					 discount = new TwoSameProductsDiscount(discount).getNewPrice();
+					 System.out.println("Final Price="+discount.getPrice());
+			}  
+				else if(c.CheckIfStoreOwner() && c.FirstTimeToBuy()&& TwoSameProductsStoreOwner(c.getUsername(),this.products.get(i).get_SerialNo())==false) {
+					 discount =new StoreOwnerDiscount(discount).getNewPrice();
+					 discount = new FirstTimeToBuyDiscount(discount).getNewPrice();
+					 System.out.println("Final Price="+discount.getPrice());
+				}
+				else if(c.CheckIfStoreOwner() &&TwoSameProductsStoreOwner(c.getUsername(),this.products.get(i).get_SerialNo())&&c.FirstTimeToBuy()==false) {	
+					 discount =new StoreOwnerDiscount(discount).getNewPrice();
+					 discount = new TwoSameProductsDiscount(discount).getNewPrice();
+						System.out.println("Final Price="+discount.getPrice()); 
+				}
+				else if(c.CheckIfStoreOwner()==false && c.FirstTimeToBuy() && TwoSameProductsCustomer(this.products.get(i).get_SerialNo())) {	
+					 discount = new FirstTimeToBuyDiscount(discount).getNewPrice();
+						 discount = new TwoSameProductsDiscount(discount).getNewPrice();
+							System.out.println("Final Price="+discount.getPrice());
+				}
 				p.set_amount(newAmount);
 				Update();
 				UpdateAmount();
@@ -112,7 +134,40 @@ public class CustomerProdChoiceController implements I_SystemMessages , I_UserIn
 		sub.DataChanged();
 	}
 
-	
+
+    public boolean TwoSameProductsCustomer(int serial) throws IOException {
+    	ArrayList<Integer> amounts = new ArrayList<Integer>();
+		String filename=this.storename+".txt";
+		I_ReadProdsFromFiles file = new ReadStoreProdsController();
+		products= file.readProds(filename);
+		for (int i=0; i<products.size(); i++) {
+			if(serial==products.get(i).get_SerialNo()) {
+			if(products.get(i).get_amount()>=2) {
+			
+				return true;
+			}
+			}
+		
+		}
+		  return false;
+	}
+    public boolean TwoSameProductsStoreOwner(String username,int serial) throws IOException {
+    	ArrayList<Integer> amounts = new ArrayList<Integer>();
+		String filename=username+"Purchase.txt";
+		ReadProdsAddressController file = new ReadProdsAddressController();
+		amounts= file.readProds(filename);
+		for(int j=0; j<amounts.size(); j++) {
+		for (int i=0; i<products.size(); i++) {
+			if(serial==products.get(i).get_SerialNo()) {
+			if(amounts.get(j)>=2) {
+				return true;
+			}
+			}
+		}
+		}
+		  return false;
+	}
+    
 	
 	
 	
