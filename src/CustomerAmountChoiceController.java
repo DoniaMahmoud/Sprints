@@ -53,8 +53,13 @@ public class CustomerAmountChoiceController implements I_SystemMessages , I_User
 		System.out.println("Enter your address: ");
 		Scanner s=new Scanner(System.in);
 		String address=s.next();
+		if(c.CheckIfStoreOwner()) {
+			this.c.BuyProductStoreOwner(p, address);
+		}
+		else
 		this.c.BuyProduct(p,address);
 		}
+		
 
 	@Override
 	public int get_choice() {

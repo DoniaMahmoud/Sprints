@@ -11,17 +11,14 @@ public class ReadOnlineStoresController implements I_ReadStoresFromFiles {
 	private ArrayList<String> OnlineOwners=new ArrayList<String>();
 	
 	public ArrayList <String> getStoreOwners() throws IOException{
-		ArrayList<String>owners=new ArrayList<String>();
 		ArrayList<String>filenames=new ArrayList<String>();
 		I_ReadFromFiles r=new ReadDataController();
 		this.OnlineOwners=r.readFile(OnlineStoreOwnerUsername);
-		for(int i=0; i<owners.size(); i++) {
-			filenames.add(owners.get(i)+".txt");
+		for(int i=0; i<this.OnlineOwners.size(); i++) {
+			filenames.add(this.OnlineOwners.get(i)+".txt");
 		}
 		return filenames;
 	}
-	
-	
 	
 	public ArrayList<Stores> getstores(File f) throws IOException{
 		String name,category;
