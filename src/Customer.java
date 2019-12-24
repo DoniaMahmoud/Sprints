@@ -28,10 +28,12 @@ public class Customer extends User{
 	}
 	
 	
-	public void BuyProduct(Products p) throws IOException {
+	public void BuyProduct(Products p,String address) throws IOException {
 		String filename=this.username+".txt";
 		I_WriteProdsToFiles w=new WriteProdsToStoresController();
 		w.WriteProducts(filename, p);
+		I_WriteToFiles f=new WriteRegData();
+		f.writeData(address,filename);
 	}
 	
 	

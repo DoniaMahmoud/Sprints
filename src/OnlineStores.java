@@ -16,7 +16,7 @@ public class OnlineStores implements Stores {
 	
 	public OnlineStores(String Name,String Category) {
 		this.name=Name;
-		this.name=Category;
+		this.category=Category;
 	}
 	
 	

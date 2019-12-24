@@ -95,6 +95,9 @@ public class ProductsToStoreController implements I_SystemMessages, I_UserInputs
 	
 	public void SendProdToAdd(Products p,String storename) throws IOException {
 		this.owner.AddProductsToStore(p,storename);
+		Subject s=new ProdsStatsSubject();
+	    Observer o= new UpdateProdsStatsController(s,storename);
+        s.DataChanged();
 	}
 
 }

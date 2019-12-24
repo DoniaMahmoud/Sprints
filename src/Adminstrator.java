@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Adminstrator extends User{
@@ -89,18 +90,23 @@ public class Adminstrator extends User{
 		  }
 
 	 
-	 public void UserStats(int TotatlCustomers, int TotalStoreOwners , int TotatlOnlineStoreOwners, int TotalUsers ) {
-		 System.out.println("The total number of customers: "+TotatlCustomers);
-		  System.out.println("The total number of StoreOwners: "+TotalStoreOwners);
-		  System.out.println("The total number of OnlineStoreOwners: "+TotatlOnlineStoreOwners);
-		  System.out.println("The total number of Users: "+TotalUsers);
+	 public void UserStats(ArrayList<String>Data ) {
+		 System.out.println("The total number of customers: "+Data.get(0));
+		 System.out.println("The total number of OnlineStoreOwners: "+Data.get(1));
+		  System.out.println("The total number of StoreOwners: "+Data.get(2));
+		  System.out.println("The total number of Users: "+Data.get(3));
 	 }
 	
 	 
-	 public void ProdsStats(int TotatlProds, String HighestProdName , int HighestProdAmount ) {
-		 System.out.println("The Number of Products in this store is: "+TotatlProds);
-		  System.out.println("The Product with the highest stock is: "+HighestProdName);
-		  System.out.println("And its amount in stock is: "+HighestProdAmount);
+	 public void ProdsStats(ArrayList<String>Data) {
+		 if(Data==null) {
+			 System.out.println("No products added in this store yet.");
+		 }
+		 else {
+			 System.out.println("The Number of Products in this store is: "+Data.get(0));
+			 System.out.println("The Product with the highest stock is: "+Data.get(1));
+			 System.out.println("And its amount in stock is: "+Data.get(2)); 
+		 }
 	 }
 
 	 

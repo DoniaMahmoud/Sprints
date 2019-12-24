@@ -17,6 +17,7 @@ public class Database {
 	protected static String NormalProductsList = "NormalProductsList.txt";
 	protected static String OnlineProductsList = "OnlineProductsList.txt";
 	protected static String BrandsList = "BrandsList.txt";
+	protected static String UserStats ="UserStats.txt";
 	
 	
 	 public void create_UserPath(String username) throws IOException{
@@ -40,9 +41,24 @@ public class Database {
 			else {
 				System.out.println("Store name is taken. Try a different one: ");
 				I_SystemMessages m=new NewStoreController();
+				m.messages();
 				I_UserInputs i=new NewStoreController(o);
+				i.getUserInputs();
 			}
+			
+			create_StoreProdsStatsPath(s.getStore_Name());
 	 }
+	 
+	 
+	 public static void create_StoreProdsStatsPath(String name) throws IOException{
+		  String path="";
+		  path=path.concat(name);
+		  path=path.concat("ProdsStats.txt");
+		  File file = new File(path);
+		  file.createNewFile();		
+	 }
+	 
+	 
 	 
 	 
 	 public static void create_StoreViewerPath(String storename) throws IOException {
@@ -87,7 +103,7 @@ public class Database {
 	 public static boolean searchstores(StoreOwner s,String Storename) throws IOException{
 		 String filename=s.getUsername()+".txt";
 		 ArrayList <String>written=new ArrayList<String>();
-		 I_ReadFromFiles r=new ReadUsernamesController();
+		 I_ReadFromFiles r=new ReadDataController();
 		 written=r.readFile(filename);
 		 for(int i=0; i<written.size(); i++) {
 			 if(written.get(i).equals(Storename)) {

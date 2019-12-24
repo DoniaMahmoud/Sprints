@@ -5,7 +5,7 @@ public class ValidationController implements I_EntryValidation{
 
 	@Override
 	public boolean registerValidate(String username, String usernamefile) throws IOException {
-		I_ReadFromFiles r=new ReadUsernamesController();
+		I_ReadFromFiles r=new ReadDataController();
 		ArrayList <String> written= new ArrayList<String>();
 		written=r.readFile(usernamefile);
 		for(int i=0; i<written.size(); i++) {
@@ -26,7 +26,7 @@ public class ValidationController implements I_EntryValidation{
 	public boolean loginValidate(String username, String usernamefile, String password, String passwordfile) throws IOException {
 		boolean found1 =false;
 		boolean found2 =false;
-		I_ReadFromFiles r=new ReadUsernamesController();
+		I_ReadFromFiles r=new ReadDataController();
 		ArrayList <String> written1= new ArrayList<String>();
 		written1=r.readFile(usernamefile);
 		r=new ReadPasswordsController();

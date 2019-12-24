@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ReadUsernamesController  implements I_ReadFromFiles {
+public class ReadDataController  implements I_ReadFromFiles {
 
 	@Override
 	public ArrayList<String> readFile(String filename) throws IOException {

@@ -7,3 +7,10 @@
 /ViewUserStatsController.class
 /UpdateProdsStatsController.class
 /ViewProductsStatsController.class
+/ReadDataController.class
+/I_WriteArrayToFiles.class
+/Observer.class
+/Subject.class
+/UserStatsSubject.class
+/WriteDataController.class
+/ProdsStatsSubject.class

@@ -2,4 +2,3 @@ janet
 don
 heidi
 noha
-wanesa
