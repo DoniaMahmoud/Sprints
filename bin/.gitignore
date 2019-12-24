@@ -14,3 +14,8 @@
 /UserStatsSubject.class
 /WriteDataController.class
 /ProdsStatsSubject.class
+/BuyingStatsSubject.class
+/ViewingStatsSubject.class
+/UpdateSoldOutStatsController.class
+/SoldOutStatsSubject.class
+/OverWriteDataController.class

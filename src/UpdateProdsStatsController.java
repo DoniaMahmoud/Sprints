@@ -15,6 +15,12 @@ public class UpdateProdsStatsController extends Observer {
 		this.products=null;
 	}
 	
+	
+	public UpdateProdsStatsController(String storeName) {
+		this.Storename=storeName;
+	}
+	
+	
 	public UpdateProdsStatsController(Subject sub,String storeName) {
 		this.sub=sub;
 		sub.registerObserver(this);
@@ -51,7 +57,7 @@ public class UpdateProdsStatsController extends Observer {
 		this.data.add(TotalProds);
 		this.data.add(this.ProductName);
 		this.data.add(Amount);
-		I_WriteArrayToFiles f=new WriteDataController();
+		I_WriteArrayToFiles f=new OverWriteDataController();
 		f.writeData(this.data,filename);
 	}
 	

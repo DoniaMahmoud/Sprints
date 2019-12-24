@@ -4,12 +4,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public abstract class UpdateStats {
-
-	private String storename;
+public abstract class UpdateStats extends Observer{
+	protected String storename;
+	protected Subject sub;
 	
 	public abstract String GenerateFilePath();
-	public void updateCounter() throws IOException{
+	
+	public void update() throws IOException{
 		String filename=GenerateFilePath();
 		int counter=getCount();
 		counter++;

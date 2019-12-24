@@ -53,8 +53,7 @@ public class ViewProductsStatsController implements I_SystemMessages,I_UserInput
 			System.exit(1);
 		}
 		else {
-			Subject sub=new ProdsStatsSubject();
-			UpdateProdsStatsController u=new UpdateProdsStatsController(sub,this.storename);
+			UpdateProdsStatsController u=new UpdateProdsStatsController(this.storename);
 			try {
 				u.Get_ProductStats();
 				this.Data=u.getData();

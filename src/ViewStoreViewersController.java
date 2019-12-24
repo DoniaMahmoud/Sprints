@@ -51,7 +51,7 @@ public class ViewStoreViewersController implements I_SystemMessages , I_UserInpu
 		}
 		 if(CheckExistence()==false) {
 			 try {
-				s.PrintStats(0);
+				s.PrintViewStats(0);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,7 +60,7 @@ public class ViewStoreViewersController implements I_SystemMessages , I_UserInpu
 		 else {
 			 UpdateStats u=new UpdateStoreViewsController(this.storename);
 			 try {
-				 s.PrintStats(u.getCount());
+				 s.PrintViewStats(u.getCount());
 				 return u.getCount();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
